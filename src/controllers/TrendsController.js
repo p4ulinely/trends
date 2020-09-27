@@ -69,16 +69,16 @@ module.exports = {
 
             for (const item of trendsTwitter) {
                 meusTrendsTT.push({
-                    nome: item.name,
-                    extra: [item.query],
+                    titulo: item.name,
+                    keywords: [item.name],
                     url: item.url,
                 })
             }
 
             for (const item of trendsYoutube) {
                 meusTrendsYT.push({
-                    nome: item.snippet.title,
-                    extra: item.snippet.tags,
+                    titulo: item.snippet.title,
+                    keywords: item.snippet.tags,
                     url: `https://www.youtube.com/watch?v=${item.id}`,
                 })
             }
