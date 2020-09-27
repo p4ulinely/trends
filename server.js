@@ -11,7 +11,6 @@ app.get('/', (req, res) => {
 })
 app.use('/v1', require('./src/routes/routes'))
 
-
 //porta
 app.listen(process.env.PORT || 8000, () => {
 	console.log('Server is On (8000)!');
