@@ -1,0 +1,22 @@
+{
+  "name": "api-trends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "pauly",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv-safe": "^8.1.0",
+    "express": "^4.17.1",
+    "twitter-lite": "^0.13.0",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
