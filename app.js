@@ -1,9 +1,11 @@
 const express = require('express')
 require("dotenv-safe").config()
+const cors = require('cors')
 
 //iniciando
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 //rotas
 app.get('/', (req, res) => {
