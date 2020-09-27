@@ -40,7 +40,7 @@ module.exports = {
 
             console.log(" : request twitter ok!")
             
-            let meusTrends = []
+
 
             /*
             * TRENDS YOUTUBE
@@ -54,34 +54,43 @@ module.exports = {
             const url_yt = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=${regiaoYoutube[regiao]}&maxResults=${quantidadeVideos}&key=${process.env.YOUTUBE_TOKEN}`
             
             const requestYoutube = await axios.get(url_yt)
-            
-            console.log(" : request youtube ok!")
-
             const trendsYoutube = requestYoutube.data.items
+            
+            if (trendsYoutube.length < 1){
+                return res.json({erro: "erro ao coletar trends do youtube"})
+            }
+
+            console.log(" : request youtube ok!")
 
             console.log(":: concatenando trends...")
 
+            let meusTrendsTT = []
+            let meusTrendsYT = []
+
             for (const item of trendsTwitter) {
-                meusTrends.push({
+                meusTrendsTT.push({
                     nome: item.name,
-                    extra: item.query,
+                    extra: [item.query],
                     url: item.url,
-                    fonte: "twitter"
                 })
             }
 
             for (const item of trendsYoutube) {
-                meusTrends.push({
+                meusTrendsYT.push({
                     nome: item.snippet.title,
                     extra: item.snippet.tags,
                     url: `https://www.youtube.com/watch?v=${item.id}`,
-                    fonte: "youtube"
                 })
             }
 
             console.log(" : concatenacao finalizada!")
         
-            return res.json(meusTrends)
+            let meusTrendsFinal = {
+                "twitter": meusTrendsTT,
+                "youtube": meusTrendsYT
+            }
+            
+            return res.json(meusTrendsFinal)
 
         } catch(err) {
             console.log(err)
