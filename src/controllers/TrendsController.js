@@ -39,8 +39,6 @@ module.exports = {
             }
 
             console.log(" : request twitter ok!")
-            
-
 
             /*
             * TRENDS YOUTUBE
@@ -94,7 +92,7 @@ module.exports = {
 
         } catch(err) {
             console.log(err)
-            return res.status(400).json({err: "ErrorCatch" })
+            return res.status(400).json({erros: "ErrorCatch" })
         }
     }
 }
