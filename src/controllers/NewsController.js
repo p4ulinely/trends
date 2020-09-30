@@ -14,7 +14,7 @@ module.exports = {
             const url_gnews = `https://gnews.io/api/v4/search?q=${stringDeBusca}&token=${process.env.GNEWS_TOKEN}`
             const requestGNews = await axios.get(url_gnews)
             
-            console.log(` : request gnes ok!`)
+            console.log(` : request GNews ok!`)
 
             res.json(requestGNews.data)
 

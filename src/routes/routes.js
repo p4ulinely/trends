@@ -10,7 +10,7 @@ const SummaryController = require('./../controllers/SummaryController')
 
 router.get('/trends/:regiao?', verificacao, TrendsController.index)
 router.get('/gnews/:q', verificacao, NewsController.show)
-router.get('/extract/:url', verificacao, ExtractController.get)
-router.get('/summary/', verificacao, SummaryController.do)
+router.post('/extract/', verificacao, ExtractController.get)
+router.post('/summary/', verificacao, SummaryController.do)
 
 module.exports = router
