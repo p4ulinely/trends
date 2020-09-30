@@ -5,10 +5,12 @@ const verificacao = require('./../middlewares/auth')
 const TrendsController = require('./../controllers/TrendsController')
 const NewsController = require('./../controllers/NewsController')
 const ExtractController = require('./../controllers/ExtractController')
+const SummaryController = require('./../controllers/SummaryController')
 
 
 router.get('/trends/:regiao?', verificacao, TrendsController.index)
 router.get('/gnews/:q', verificacao, NewsController.show)
 router.get('/extract/:url', verificacao, ExtractController.get)
+router.get('/summary/', verificacao, SummaryController.do)
 
 module.exports = router

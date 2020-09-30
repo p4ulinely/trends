@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv-safe": "^8.1.0",
     "express": "^4.17.1",
+    "node-summary": "git+https://github.com/TroniPM/node-summary.git",
     "twitter-lite": "^0.13.0"
   },
   "devDependencies": {
