@@ -9,7 +9,7 @@ app.use(cors())
 
 //rotas
 app.get('/', (req, res) => {
-	res.json({api: "meus-trends-v1"})
+	res.json({ api: "meus-trends-v1" })
 })
 app.use('/v1', require('./src/routes/routes'))
 
