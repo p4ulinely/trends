@@ -7,7 +7,7 @@ module.exports = {
             const stringDeBusca = req.params.q
 
             if (stringDeBusca.length < 2)
-                return res.status(400).json({erros: "string de busca ivalida" })
+                return res.status(400).json({erros: "string de busca invalida" })
 
             console.log(`:: coletando noticias no gnews...`)
 
