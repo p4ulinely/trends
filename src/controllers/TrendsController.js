@@ -51,14 +51,21 @@ module.exports = {
             const quantidadeVideos = 10
             const url_yt = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=${regiaoYoutube[regiao]}&maxResults=${quantidadeVideos}&key=${process.env.YOUTUBE_TOKEN}`
             
-            const requestYoutube = await axios.get(url_yt)
-            const trendsYoutube = requestYoutube.data.items
-            
-            if (trendsYoutube.length < 1){
-                return res.json({erro: "erro ao coletar trends do youtube"})
+            let requestYoutube = []
+            let trendsYoutube = []
+
+            try {
+                requestYoutube = await axios.get(url_yt)
+            } catch {
+                requestYoutube = []
             }
 
-            console.log(" : request youtube ok!")
+            if (requestYoutube.length < 1)
+                console.log(" : erro ao coletar trends do youtube")
+            else {
+                trendsYoutube = requestYoutube.data.items
+                console.log(" : request youtube ok!")
+            }
 
             console.log(":: concatenando trends...")
 
@@ -73,12 +80,14 @@ module.exports = {
                 })
             }
 
-            for (const item of trendsYoutube) {
-                meusTrendsYT.push({
-                    titulo: item.snippet.title,
-                    keywords: item.snippet.tags,
-                    url: `https://www.youtube.com/watch?v=${item.id}`,
-                })
+            if (trendsYoutube.length > 0) {
+                for (const item of trendsYoutube) {
+                    meusTrendsYT.push({
+                        titulo: item.snippet.title,
+                        keywords: item.snippet.tags,
+                        url: `https://www.youtube.com/watch?v=${item.id}`,
+                    })
+                }
             }
 
             console.log(" : concatenacao finalizada!")
